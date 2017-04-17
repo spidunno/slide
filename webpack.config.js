@@ -8,8 +8,17 @@ module.exports = {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js'
   },
+  devServer: {
+    publicPath: 'public/',
+    historyApiFallback: true
+  },
   resolve: {
     extensions: ['.js', '.json']
+  },
+  stats: {
+    colors: true,
+    reasons: true,
+    chunks: true
   },
   module: {
     rules: [
