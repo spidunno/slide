@@ -1,13 +1,5 @@
 import engine from './engine';
+import Vector from './vector';
 
-function callback() {
-  console.log('Running');
-}
-
-
-var myEngine = engine.create(callback);
-myEngine.start();
-
-document.addEventListener('click', () => {
-  myEngine.stop();
-});
+const v = new Vector(10, 32);
+console.log(v.getY());

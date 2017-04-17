@@ -1,6 +1,10 @@
 const engine = {
   isRunning: false,
   requestTick: false,
+  /**
+   *
+   * @param {!Function} callback
+   */
   create(callback = () => {}) {
     const eng = Object.create(engine);
     eng.cb = callback;
