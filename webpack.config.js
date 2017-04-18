@@ -2,14 +2,15 @@ var path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './js/slide.js',
+  entry: './js/app.js',
   devtool: 'eval',
   output: {
-    path: path.join(__dirname, '/public'),
+    path: path.join(__dirname, 'public'),
     filename: 'bundle.js'
   },
   devServer: {
-    publicPath: 'public/',
+    publicPath: '/public/',
+    contentBase: path.join(__dirname, 'public'),
     historyApiFallback: true
   },
   resolve: {

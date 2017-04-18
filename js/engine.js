@@ -1,37 +1,52 @@
-const engine = {
-  isRunning: false,
-  requestTick: false,
+class Engine {
   /**
-   *
+   * Create an Engine object.
    * @param {!Function} callback
    */
-  create(callback = () => {}) {
-    const eng = Object.create(engine);
-    eng.cb = callback;
-    return eng;
-  },
+  constructor(callback = () => {}) {
+    this.cb = callback;
+    this.requestTick = false;
+    this.isRunning = false;
+    this.callback = this.callback.bind(this);
+  }
+
+  /**
+   * Call user callback and loop again.
+   */
   callback() {
     this.cb();
     this.requestTick = true;
     this.loop();
-  },
+  }
+
+  /**
+   * Run requestAnimationFrame against the user callback.
+   */
+  loop() {
+    if (this.requestTick && this.isRunning) {
+      this.requestTick = false;
+      requestAnimationFrame(this.callback);
+    }
+  }
+
+  /**
+   * Start the requestAnimationFrame loop.
+   */
   start() {
     if (!this.isRunning) {
       this.isRunning = true;
       this.requestTick = true;
       this.loop();
     }
-  },
+  }
+
+  /**
+   * Stop the requestAnimationFrame loop.
+   */
   stop() {
     this.isRunning = false;
     this.requestTick = false;
-  },
-  loop() {
-    if (this.requestTick && this.isRunning) {
-      this.requestTick = false;
-      requestAnimationFrame(this.callback.bind(this));
-    }
   }
-};
+}
 
-export default engine;
+export default Engine;
