@@ -1,17 +1,11 @@
 var path = require('path');
 
 module.exports = {
-  context: __dirname,
-  entry: './js/app.js',
-  devtool: 'eval',
+  context: path.resolve(__dirname, 'src'),
+  entry: './app.js',
   output: {
-    path: path.join(__dirname, 'public'),
+    path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
-  },
-  devServer: {
-    publicPath: '/public/',
-    contentBase: path.join(__dirname, 'public'),
-    historyApiFallback: true
   },
   resolve: {
     extensions: ['.js', '.json']

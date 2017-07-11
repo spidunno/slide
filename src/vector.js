@@ -26,6 +26,15 @@ class Vector {
   }
 
   /**
+   * Set both values in vector.
+   * @param {number} value
+   */
+  set(value) {
+    this.x = value;
+    this.y = value;
+  }
+
+  /**
    * Gets x value of vector.
    * @return {number}
    */
